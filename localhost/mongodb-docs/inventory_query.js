@@ -4,3 +4,9 @@
 //     { prodId: 102, price: 15, quantity: 432 },
 //     { prodId: 103, price: 17, quantity: 320 }
 // ])
+
+// db.inventory.insertOne(
+//     { prodId: 104, price: 18, quantity: 350 }
+// )
+
+// db.inventory.find({})
