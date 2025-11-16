@@ -201,9 +201,137 @@
 // Specify a Query Condition on a Field Embedded in an Array of Documents
 // If you do not know the index position of the document nested in the array, concatenate the name of the array field, with a dot (.) and the name of the field in the nested document.
 // The following example selects all documents where the instock array has at least one embedded document that contains the field `qty` whose value is less than or equal to 20:
-db.getCollection('crud-inventory').find({
-'instock.qty': { $lte: 20 }
-})
+// db.getCollection('crud-inventory').find({
+//     'instock.qty': { $lte: 20 }
+// })
+
+
+// Use the Array Index to Query for a Field in the Embedded Document
+// The following example selects all documents where the `instock` array has as its first element a document that contains the field `qty` whose value is less than or equal to 20:
+// db.getCollection('crud-inventory').find({
+//     'instock.0.qty': { $lte: 20 }
+// })
+
+
+// Specify Multiple Conditions for Array of Documents
+// Use $elemMatch operator to specify multiple criteria on an array of embedded documents such that at least one embedded document satisfies all the specified criteria.
+// The following example queries for documents where the instock array has at least one embedded/nested document that contains both the field `qty` equal to 5 and the field `warehouse` equal to A:
+// db.getCollection('crud-inventory').find({
+//     instock: { $elemMatch: { qty: 5, warehouse: 'A' } }
+// })
+
+
+// The following example queries for documents where the instock array has at least one embedded/nested document that contains the field `qty` that is greater than 10 and less than or equal to 20:
+// db.getCollection('crud-inventory').find({
+//     instock: { $elemMatch: { qty: { $gt: 10, $lte: 20 } } }
+// })
+
+
+// Combination of Elements Satisfies the Criteria
+// If the compound query conditions on an array field do not use the $elemMatch operator, the query selects those documents whose array contains any combination of elements that satisfies the conditions.
+// For example, the following query matches documents where any document nested in the `instock` array has the `qty` field greater than 10 and any document (but not necessarily the same embedded document) in the array has the qty field less than or equal to 20:
+// db.getCollection('crud-inventory').find({
+//     'instock.qty': { $gt: 10, $lte: 20 }
+// })
+
+
+// The following example queries for documents where the instock array has at least one embedded document that contains the field qty equal to 5 and at least one embedded document (but not necessarily the same embedded document) that contains the fieldwarehouse equal to A:
+// db.getCollection('crud-inventory').find({
+//     'instock.qty': 5,
+//     'instock.warehouse': 'A'
+// })
+
+
+// If you do not specify a projection document, the db.collection.find() method returns all fields in the matching documents.
+// The following example returns all fields from all documents in the inventory collection where the status equals "A":
+// db.getCollection('crud-inventory').find({
+//     status: 'A'
+// })
+
+
+// Return the Specified Fields and the _id Field Only
+// A projection can explicitly include several fields by setting the <field> to 1 in the projection document. The following operation returns all documents that match the query. In the result set, only the item, status and, by default, the _id fields return in the matching documents.
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ item: 1, status: 1 })
+
+
+// Suppress _id Field
+// You can remove the _id field from the results by setting it to 0 in the projection, as in the following example:
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ item: 1, status: 1, _id: 0 })
+
+
+// Return All But the Excluded Fields
+// Instead of listing the fields to return in the matching document, you can use a projection to exclude specific fields. The following example which returns all fields except for the status and the instock fields in the matching documents:
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ status: 0, instock: 0 })
+
+
+// Return Specific Fields in Embedded/Nested Documents
+// You can return specific fields in an embedded document. Use the dot notation to refer to the embedded field and set to 1 in the projection document.
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ item: 1, status: 1, 'size.uom': 1 })
+
+// Another way:
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ item: 1, status: 1, size: { uom: 1 } })
+
+
+// NOTE: You can also specify embedded fields using the nested form. For example, { item: 1, status: 1, size: { uom: 1 } }.
+
+
+// Suppress Specific Fields in Embedded Documents
+// The following example specifies a projection to exclude the uom field inside the size document. All other fields are returned in the matching documents:
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ 'size.oum': 0 })
+
+// Another way:
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ size: { uom: 0 } })
+
+
+// Projection on Embedded Documents in an Array
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ item: 1, status: 1, 'instock.qty': 1 })
+
+
+// Project Specific Array Elements in the Returned Array
+// The following example uses the $slice projection operator to return the last element in the instock array:
+// db.getCollection('crud-inventory')
+//     .find({ status: 'A' })
+//     .project({ item: 1, status: 1, instock: { $slice: -1 } })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
