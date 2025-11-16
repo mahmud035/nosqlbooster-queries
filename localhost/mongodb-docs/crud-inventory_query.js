@@ -310,8 +310,23 @@
 //     .project({ item: 1, status: 1, instock: { $slice: -1 } })
 
 
+// The following example uses the Collection.updateOne() method on the inventory collection to update the first document where item equals "paper":
+// db.getCollection('crud-inventory').updateOne(
+//     { item: 'paper' },
+//     {
+//         $set: { 'size.uom': 'cm', status: 'P' }
+//     }
+// )
 
 
+// The following example uses the Collection.updateMany() method on the inventory collection to update all documents where qty is less than 50:
+// db.getCollection('crud-inventory').updateMany(
+//     { qty: { $lt: 50 } },
+//     {
+//         $set: { 'size.uom': 'in', status: 'P' },
+//         $currentDate: { lastModified: true }
+//     }
+// )
 
 
 
