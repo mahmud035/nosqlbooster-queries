@@ -3,39 +3,5 @@
 //     .find({ description: null })
 //     .project({ description: 1 })
 
-
 // The following query filter to match only documents that do not contain the description field. Only the document that you inserted earlier should appear:
-// db.companies.find({ description: { $exists: false } })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+db.companies.find({ description: { $exists: false } });
