@@ -44,6 +44,41 @@
 // })
 
 
+// Query for Locations within a Circle on a Sphere
+// To query the collection, use $geoWithin with the $centerSphere operator:
+db.places2.find({
+    loc: {
+        $geoWithin: {
+            $centerSphere: [
+                [-1.76, 51.16],
+                10 / 6378.1
+            ]
+        }
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
