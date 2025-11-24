@@ -9,4 +9,4 @@
 //     { prodId: 104, price: 18, quantity: 350 }
 // )
 
-db.inventory.find({});
+// db.inventory.find({});
