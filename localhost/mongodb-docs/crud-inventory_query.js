@@ -204,9 +204,9 @@
 // Combination of Elements Satisfies the Criteria
 // If the compound query conditions on an array field do not use the $elemMatch operator, the query selects those documents whose array contains any combination of elements that satisfies the conditions.
 // For example, the following query matches documents where any document nested in the `instock` array has the `qty` field greater than 10 and any document (but not necessarily the same embedded document) in the array has the qty field less than or equal to 20:
-db.getCollection('crud-inventory').find({
-  'instock.qty': { $gt: 10, $lte: 20 },
-});
+// db.getCollection('crud-inventory').find({
+//   'instock.qty': { $gt: 10, $lte: 20 },
+// });
 
 // The following example queries for documents where the instock array has at least one embedded document that contains the field qty equal to 5 and at least one embedded document (but not necessarily the same embedded document) that contains the fieldwarehouse equal to A:
 // db.getCollection('crud-inventory').find({
@@ -216,9 +216,9 @@ db.getCollection('crud-inventory').find({
 
 // If you do not specify a projection document, the db.collection.find() method returns all fields in the matching documents.
 // The following example returns all fields from all documents in the inventory collection where the status equals "A":
-db.getCollection('crud-inventory').find({
-  status: 'A',
-});
+// db.getCollection('crud-inventory').find({
+//   status: 'A',
+// });
 
 // Return the Specified Fields and the _id Field Only
 // A projection can explicitly include several fields by setting the <field> to 1 in the projection document. The following operation returns all documents that match the query. In the result set, only the item, status and, by default, the _id fields return in the matching documents.
