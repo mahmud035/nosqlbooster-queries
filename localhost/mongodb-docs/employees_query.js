@@ -42,10 +42,10 @@
 // )
 
 // Use the find() method to confirm the update to Bob's email.
-// db.employees.find(
-//     { 'engineering': { $elemMatch: { name: 'Bob' } } },
-//     { 'engineering.$': 1, _id: 0 }
-// )
+db.employees.find(
+  { engineering: { $elemMatch: { name: 'Bob' } } },
+  { 'engineering.$': 1, _id: 0 }
+);
 
 // To update every element of an array with a single operation, use the $[] operator.
 // Consider a case where you want to give an additional bonus of $2,000 to your sales employees in NYC. You can use the updateMany() method with the $[] operator and the $inc operator to increase all bonus fields within the sales array in the NYC document by 2000.
@@ -55,7 +55,7 @@
 // )
 
 // Use the find() method to confirm the update.
-// db.employees.find({ _id: 'NYC' }).project({ sales: 1 })
+db.employees.find({ _id: 'NYC' }).project({ sales: 1 });
 
 // Use the $[<identifier>] Operator to Update Elements that Match a Filter Condition
 // To update several array elements in a single operation without excessive client-side code paired with a replace operation, use the $[<identifier>] operator. The $[<identifier>] operator acts as a placeholder to update all elements that match an arrayFilters condition.
@@ -82,10 +82,10 @@
 // * To match elemY, an array object must have a name field of Ed and a salary of 50000.
 
 // Use the find() method to confirm the update to Bob's salary because he meets both elemX's conditions.
-// db.employees.find(
-//     { 'engineering.name': 'Bob' },
-//     { engineering: { $elemMatch: { name: 'Bob' } }, _id: 0 }
-// )
+db.employees.find(
+  { 'engineering.name': 'Bob' },
+  { engineering: { $elemMatch: { name: 'Bob' } }, _id: 0 }
+);
 
 // Use the find() method to confirm the update to Ed's salary did not succeed because he does not meet either elemX or elemY's conditions.
 db.employees.find(
