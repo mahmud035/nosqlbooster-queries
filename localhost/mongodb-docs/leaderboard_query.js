@@ -26,11 +26,9 @@
 //     }
 // ])
 
-
 // This query returns leaderboard results:
 // The results are sorted first by `score` in descending order, then by `username` in ascending order (alphabetically).
-// db.leaderboard.find({}).sort({ score: -1, username: 1 })
-
+db.leaderboard.find({}).sort({ score: -1, username: 1 });
 
 // Supporting Index for the Leaderboard
 // The following index improves performance for the leaderboard results because the sort order of the index matches the sort order used in the query:
@@ -39,25 +37,6 @@
 // * username values in ascending order (alphabetically).
 // db.leaderboard.createIndex({ score: -1, username: 1 })
 
-
 // Reverse Results
 // The following query returns the leaderboard in reverse order, where results are sorted first by ascending score values and then by descending username values (reverse alphabetically):
-db.leaderboard.find({}).sort({ score: 1, username: -1 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+db.leaderboard.find({}).sort({ score: 1, username: -1 });
