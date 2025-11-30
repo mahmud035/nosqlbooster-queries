@@ -32,4 +32,4 @@ db.movies.find({ 'countries.0': { $ne: 'USA' } }).project({ countries: 1 });
 db.movies.find({ genres: { $size: 3 } }).project({ genres: 1 });
 
 // This query filter returns all documents in the sample_mflix.movies collection where genres equals Action and rated equals either PG or PG-13.
-db.movies.deleteMany({ genres: 'Action', rated: { $in: ['PG', 'PG-13'] } });
+// db.movies.deleteMany({ genres: 'Action', rated: { $in: ['PG', 'PG-13'] } });
