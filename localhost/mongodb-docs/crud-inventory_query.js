@@ -92,14 +92,14 @@
 // NOTE: When querying using dot notation, the field and nested field must be inside quotation marks.
 
 // Select all documents where the field `uom` nested in the `size` field equals "in"
-db.getCollection('crud-inventory').find({
-  'size.uom': 'in',
-});
+// db.getCollection('crud-inventory').find({
+//     'size.uom': 'in'
+// })
 
 // Another example
-db.getCollection('crud-inventory').find({
-  'size.h': { $lt: 15 },
-});
+// db.getCollection('crud-inventory').find({
+//     'size.h': { $lt: 15 }
+// })
 
 // Specify AND Condition
 // The following query selects all documents where the nested field `h` is less than 15, the nested field `uom` equals "in", and the `status` field equals "D":
