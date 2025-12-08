@@ -103,17 +103,17 @@
 
 // Specify AND Condition
 // The following query selects all documents where the nested field `h` is less than 15, the nested field `uom` equals "in", and the `status` field equals "D":
-db.getCollection('crud-inventory').find({
-  'size.h': { $lt: 15 },
-  'size.uom': 'in',
-  status: 'D',
-});
+// db.getCollection('crud-inventory').find({
+//     'size.h': { $lt: 15 },
+//     'size.uom': 'in',
+//     status: 'D'
+// })
 
 // Match an Embedded/Nested Document
 // the following query selects all documents where the field `size` equals the document { h: 14, w: 21, uom: "cm" }:
-db.getCollection('crud-inventory').find({
-  size: { h: 14, w: 21, uom: 'cm' },
-});
+// db.getCollection('crud-inventory').find({
+//     size: { h: 14, w: 21, uom: 'cm' }
+// })
 
 // Match an Array
 // The following example queries for all documents where the field `tags` value is an array with exactly two elements, "red" and "blank", in the specified order:
