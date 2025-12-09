@@ -1,28 +1,29 @@
 // You can use positional operators with MongoDB Query Language (MQL) to update documents that contain arrays without replacing the array or appending to it.
-// db.employees.insertMany(
-//     [
-//         {
-//             _id: 'SF',
-//             engineering: [
-//                 { name: 'Alice', email: 'missingEmail', salary: 100000 },
-//                 { name: 'Bob', email: 'missingEmail', salary: 75000 }
-//             ],
-//             sales: [
-//                 { name: 'Charlie', email: 'charlie@mail.com', salary: 90000, bonus: 1000 }
-//             ]
-//         },
-//         {
-//             _id: 'NYC',
-//             engineering: [
-//                 { name: 'Dave', email: 'dave@mail.com', salary: 55000 },
-//             ],
-//             sales: [
-//                 { name: 'Ed', email: 'ed@mail.com', salary: 99000, bonus: 2000 },
-//                 { name: 'Fran', email: 'fran@mail.com', salary: 50000, bonus: 10000 }
-//             ]
-//         }
-//     ]
-// );
+db.employees.insertMany([
+  {
+    _id: 'SF',
+    engineering: [
+      { name: 'Alice', email: 'missingEmail', salary: 100000 },
+      { name: 'Bob', email: 'missingEmail', salary: 75000 },
+    ],
+    sales: [
+      {
+        name: 'Charlie',
+        email: 'charlie@mail.com',
+        salary: 90000,
+        bonus: 1000,
+      },
+    ],
+  },
+  {
+    _id: 'NYC',
+    engineering: [{ name: 'Dave', email: 'dave@mail.com', salary: 55000 }],
+    sales: [
+      { name: 'Ed', email: 'ed@mail.com', salary: 99000, bonus: 2000 },
+      { name: 'Fran', email: 'fran@mail.com', salary: 50000, bonus: 10000 },
+    ],
+  },
+]);
 
 // To update only the first match within an array, use the $ operator. The $ operator acts as a placeholder to update the first element matched.
 // The following example uses the updateOne() method with the $ and $set operators to update the first email that has the value missingEmail in the engineering array to alice@mail.com.
