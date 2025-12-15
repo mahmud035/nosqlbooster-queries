@@ -111,15 +111,15 @@
 
 // Match an Embedded/Nested Document
 // the following query selects all documents where the field `size` equals the document { h: 14, w: 21, uom: "cm" }:
-// db.getCollection('crud-inventory').find({
-//   size: { h: 14, w: 21, uom: 'cm' },
-// });
+db.getCollection('crud-inventory').find({
+  size: { h: 14, w: 21, uom: 'cm' },
+});
 
 // Match an Array
 // The following example queries for all documents where the field `tags` value is an array with exactly two elements, "red" and "blank", in the specified order:
-// db.getCollection('crud-inventory').find({
-//     tags: ['red', 'blank']
-// })
+db.getCollection('crud-inventory').find({
+  tags: ['red', 'blank'],
+});
 
 // If, instead, you wish to find an array that contains both the elements "red" and "blank", without regard to order or other elements in the array, use the $all operator:
 // db.getCollection('crud-inventory').find({
